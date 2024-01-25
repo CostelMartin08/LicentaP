@@ -1,0 +1,157 @@
+<%- include('../partials/header.ejs', { includeLayouts: includeLayouts[0] }); -%>
+
+
+
+
+    <body class="main-layout ">
+
+
+        <section class="container mt-2 my-md-3 py-md-5" style="width: 100dvw">
+            <div class="container mt-2">
+                <h4>Cos</h4>
+            </div>
+
+            <table class="pt-5" >
+
+                <tr>
+                    <th>Produs</th>
+                    <th>Cantitate</th>
+                    <th>Total per produs</th>
+                </tr>
+
+
+                <!-- cart -->
+                <% cart.forEach(function(item){ %>
+
+
+                    <tr>
+                        <td class="w-50">
+                            <div class="product-info">
+
+                                <img src="images/<%= item.image %>" alt="img" />
+
+                                <%if(item.stock){%>
+                                    <div class="alert alert-danger alert-box">
+                                        <p>Nu mai sunt alte unitati disponibile</p>
+                                    </div>
+
+                                    <%}%>
+                                        <div>
+                                            <p>
+                                                <%= item.artist %>
+                                            </p>
+                                            <p>
+                                                <%= item.nume %>
+                                            </p>
+
+                                            <% if(item.reducere !=0){ %>
+                                                <small><span>
+                                                        <%= item.reducere %>
+                                                    </span>Lei</small>
+                                                <% } else { %>
+                                                    <small><span>
+                                                            <%= item.pret %>
+                                                        </span>Lei</small>
+                                                    <% } %>
+                                                        <br>
+
+
+
+                                                        <form class="mt-2" method="post"
+                                                            action="/operatiuni/sterge_produs">
+
+                                                            <input type="hidden" name="id" value="<%= item.id %>">
+
+
+                                                            <input type="submit" name="remove_btn" class="remove-btn"
+                                                                value="Sterge selectia">
+
+                                                        </form>
+
+                                        </div>
+                            </div>
+                        </td>
+
+                        <td class="w-25">
+                            <form class="d-flex justify-content-center flex-row align-items-center" method="post" action="/operatiuni/schimba_cantitate">
+                                <input type="hidden" value="<%= item.id %>" name="id">
+                                <input type="submit" value="-" class="edit-btn" name="remove_produs">
+                                <input class="input-set" type="number" name="Cantitate" value='<%= item.cantitate %>' readonly>
+                                <input type="submit" value="+" class="edit-btn" name="adauga_produs">
+                            </form>
+                       
+</td>
+
+                      <td class="w-25">
+
+                            <% if(item.reducere !=0){ %>
+
+                                <span class="product-price">
+                                    <%= item.reducere * item.cantitate %> Lei
+                                </span>
+
+                                <% } else { %>
+                                    <span class="product-price">
+                                        <%= item.pret * item.cantitate %> Lei
+                                    </span>
+                                    <% } %>
+                        </td>
+
+                    </tr>
+
+                    <% }) %>
+            </table>
+
+
+
+            <div class="cart-total">
+                <tr>
+                    <td> Total cos: </td>
+                    <td>
+                        <%= total %> Lei
+                    </td>
+            </div>
+            </tr>
+
+            <div class="checkout-container">
+                <tr>
+                    <form method="get" action="/plaseaza_comanda">
+                        <td> <input type="submit" class="btn checkout-btn mb-3" value="Plaseaza Comanda" name="">
+                        </td>
+                    </form>
+                </tr>
+            </div>
+
+        </section>
+
+        <!-- Javascript files-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.0.0.min.js"></script>
+        <script src="js/plugin.js"></script>
+        <!-- sidebar -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/custom.js"></script>
+        <!-- javascript -->
+        <script src="js/owl.carousel.js"></script>
+        <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".fancybox").fancybox({
+                    openEffect: "none",
+                    closeEffect: "none"
+                });
+
+                $(".zoom").hover(function () {
+
+                    $(this).addClass('transition');
+                }, function () {
+
+                    $(this).removeClass('transition');
+                });
+            });
+        </script>
+    </body>
+
+    <%- include('../partials/footer.ejs', { includeLayouts: includeLayouts[0] }); -%>

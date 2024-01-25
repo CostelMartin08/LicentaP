@@ -1,0 +1,95 @@
+<%- include('../partials/header.ejs', { includeLayouts: includeLayouts[0] }); -%>
+
+
+
+
+    <body class="main-layout ">
+
+        <div class="loader_bg">
+            <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+        </div>
+
+
+        <section class="my-2 py-3 checkout">
+            <div class="container text-center mt-1 pt-5">
+                <h2>Checkout</h2>
+                <hr class="mx-auto">
+            </div>
+
+            <div class="mx-auto container">
+                <form id="checkout-form" method="post" action="/plaseaza_comanda">
+
+                    <div class="form-group checkout-small-element">
+                        <label for="">Nume</label>
+                        <input type="text" class="form-control" value="<%= user.lastName%><%= user.firstName %>" id="checkout-name" name="nume"
+                            placeholder="Introduceti numele">
+                    </div>
+
+                    <div class="form-group checkout-small-element">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control" value="<%=user.email%>" id="checkout-email" name="email"
+                            placeholder="Adresa email">
+                    </div>
+
+                    <div class="form-group checkout-small-element">
+                        <label for="">Telefon</label>
+                        <input type="tel" class="form-control" value="<%=user.phone%>" id="checkout-phone" name="telefon"
+                            placeholder="Introduceti numarul dumneavoastra de telefon">
+                    </div>
+
+                    <div class="form-group checkout-small-element">
+                        <label for="">Oras</label>
+                        <input type="text" class="form-control" id="checkout-city" name="oras"
+                            placeholder="Introduceti orasul in care locuiti">
+                    </div>
+
+                    <div class="form-group checkout-small-element">
+                        <label for="">Adresa</label>
+                        <input type="text" class="form-control" id="checkout-address" name="adresa"
+                            placeholder="Introduceti adresa dumneavoastra">
+                    </div>
+
+                    <div class="form-group checkout-btn-container">
+                        <p id="checkout-total" name="total">Total: <%=total %> Lei </p>
+                        <input type="hidden" id="checkout-total-input" name="total" value="<%= total %>">
+                        <input type="hidden" id="checkout-total-input" name="total" value="<%= user %>">
+                        <input type="submit" class="btn" id="checkout-btn" name="checkout-btn" value="Checkout">
+                    </div>
+
+                </form>
+            </div>
+
+        </section>
+
+        <!-- Javascript files-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.0.0.min.js"></script>
+        <script src="js/plugin.js"></script>
+        <!-- sidebar -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/custom.js"></script>
+        <!-- javascript -->
+        <script src="js/owl.carousel.js"></script>
+        <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $(".fancybox").fancybox({
+                    openEffect: "none",
+                    closeEffect: "none"
+                });
+
+                $(".zoom").hover(function () {
+
+                    $(this).addClass('transition');
+                }, function () {
+
+                    $(this).removeClass('transition');
+                });
+            });
+        </script>
+
+    </body>
+
+    <%- include('../partials/footer.ejs', { includeLayouts: includeLayouts[0] }); -%>

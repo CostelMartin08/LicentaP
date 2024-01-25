@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs', { includeLayouts: includeLayouts[0] }); -%>
+
+    <body class="main-layout ">
+        <!-- loader  -->
+        <div class="loader_bg">
+            <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+        </div>
+        <!-- end loader -->
+
+        <section class="class container mt-md-4 my-3 py-5">
+
+            <section class="container mt-2 text-center">
+
+
+                <i class="fa-solid fa-check mt-4" style="font-size: 200px; color:#051108"></i>
+
+                <h6 class="h1">Comanda dumneavoastra a fost plasata cu succes!</h6>
+                <h2> Total: <%= total %> Lei</h2>
+                <h4>Plata ramburs</h4>
+
+                <div id="paypal-button-container"></div>
+                <p id="result-message"></p>
+                <!-- Replace the "test" client-id value with your client-id -->
+                <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+                <script src="index.js"></script>
+
+                <!-- Javascript files-->
+                <script src="js/jquery.min.js"></script>
+                <script src="js/popper.min.js"></script>
+                <script src="js/bootstrap.bundle.min.js"></script>
+                <script src="js/jquery-3.0.0.min.js"></script>
+                <script src="js/plugin.js"></script>
+                <!-- sidebar -->
+                <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+                <script src="js/custom.js"></script>
+                <!-- javascript -->
+                <script src="js/owl.carousel.js"></script>
+                <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $(".fancybox").fancybox({
+                            openEffect: "none",
+                            closeEffect: "none"
+                        });
+
+                        $(".zoom").hover(function () {
+
+                            $(this).addClass('transition');
+                        }, function () {
+
+                            $(this).removeClass('transition');
+                        });
+                    });
+                </script>
+
+            </section>
+        </section>
+    </body>
+
+    <%- include('../partials/footer.ejs', { includeLayouts: includeLayouts[0] }); -%>
