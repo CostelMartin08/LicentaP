@@ -2346,9 +2346,10 @@ ul.location_icon span {
      width: 80%;
 }
 
-.mean-nav{
+.mean-nav {
      width: 200px;
 }
+
 .drk-color {
      color: black;
 }
@@ -2359,8 +2360,74 @@ ul.location_icon span {
           width: 120px;
           padding: 5px;
      }
-     .alert-box p{
+
+     .alert-box p {
           font-size: 10px;
+     }
+
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Comenzi                                  */
+/* -------------------------------------------------------------------------- */
+
+.order-page {
+     margin-top: 100px;
+     text-align: center;
+}
+
+.box-order {
+     display: grid;
+     grid-template-columns: repeat(1, 1fr);
+     text-align: left;
+     grid-gap: 25px;
+     margin-bottom: 100px;
+}
+
+
+.order {
+     border: 2px groove #ccc;
+     padding: 10px;
+
+
+}
+
+.order p {
+     color: #000;
+     font-weight: 300;
+     font-size: 18px;
+     margin-top: 5px;
+     margin-bottom: 5px;
+}
+
+.order p span {
+     color: #000;
+     font-weight: 400;
+     margin-right: 10px;
+}
+
+.font-order {
+     font-size: 40px;
+     margin-bottom: 20px;
+}
+
+@media only screen and (min-width: 776px) {
+
+     .box-order {
+          grid-template-columns: repeat(2, 1fr);
+
+     }
+
+
+
+}
+
+
+@media only screen and (min-width: 1200px) {
+
+     .box-order {
+          grid-template-columns: repeat(3, 1fr);
      }
 
 }

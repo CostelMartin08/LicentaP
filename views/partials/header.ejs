@@ -1,69 +1,74 @@
 <% if (includeLayouts[0]) { %>
 
+    <% const token=typeof param !=='undefined' ? param : null; %>
+        <% const userS=typeof admin !=='undefined' ? admin : null%>
 
-    <header>
- <% const token=typeof param !=='undefined' ? param : null; %>
+            <header>
 
-<%console.log(token)%>
-        <div class="header">
+                <div class="header">
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                        <div class="full">
-                            <div class="center-desk">
-                                <div class="logo">
-                            
-                                    <img src="images/logo.png" alt="#">
-                                    <h3>
-                                        <%= typeof firstName === 'undefined' ? 'Utilizator neînregistrat' : 'Buna ziua ' + firstName %>
-                                      </h3>
-                                      
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                                <div class="full">
+                                    <div class="center-desk">
+                                        <div class="logo">
 
+                                            <img src="images/logo.png" alt="#">
+                                            <h3>
+                                                <%= typeof firstName==='undefined' ? 'Utilizator neînregistrat'
+                                                    : 'Bună ' + firstName %>
+                                            </h3>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="d-flex align-items-center justify-content-end col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                                <div class="menu-area">
+                                    <div class="limit-box">
+                                        <nav class="main-menu">
+                                            <ul class="menu-area-main">
+
+                                                <%if(token){%>
+                                                    <li class="active"> <a href="/?param1=<%=token%>">Acasa</a> </li>
+                                                    <%}else{%>
+                                                        <li class="active"> <a href="/">Acasa</a> </li>
+                                                        <%}%>
+                                                            <%if(userS===1){%>
+                                                                <li><a id="comenzi" href="./comenzi">Comenzi</a></li>
+                                                                <%}%>
+                                                                    <li><a href="/register">Înregistrare</a></li>
+                                                                    <li><a href="#contact">Contact</a></li>
+                                                                    <%if(!token){%>
+                                                                        <li><a id="loginButton" href="./login">Login</a>
+                                                                        </li>
+                                                                        <%}%>
+                                                                            <%if(token){%>
+                                                                                <li><a id="deleteButton"
+                                                                                        href="./logout">Logout</a>
+                                                                                </li>
+                                                                                <%}%>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 offset-md-6">
+                                <div class="location_icon_bottum">
+                                    <ul>
+                                        <li><img src="images/call.png" />+40751708316</li>
+                                        <li><img src="images/email.png" />vshop@gmail.com</li>
+                                        <li><img src="images/loc.png" />Strada Palat, nr. 12A</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center justify-content-end col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                        <div class="menu-area">
-                            <div class="limit-box">
-                                <nav class="main-menu">
-                                    <ul class="menu-area-main">
-                                        
-                                        <%if(token){%>
-                                        <li class="active"> <a href="/?param1=<%=token%>">Acasa</a> </li>
-                                        <%}else{%>
-                                            <li class="active"> <a href="/">Acasa</a> </li>
-                                            <%}%>
-                                        <!--
-                                        <li> <a href="buy.html">Despre</a> </li>
-                                        <li><a href="cos.html">Cos de cumparaturi</a></li>
-                                        -->
-                                        <li><a href="#review_link">Review</a></li>
-                                        <li><a href="#contact">Contact</a></li>
-                                        <li><a id="loginButton" href="./login">Login</a></li>
-                                       
-                                            <%if(token){%>
-                                                <li><a id="deleteButton" href="./logout">Logout</a></li>
-                                                <%}%>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 offset-md-6">
-                        <div class="location_icon_bottum">
-                            <ul>
-                                <li><img src="images/call.png" />+40751708316</li>
-                                <li><img src="images/email.png" />vshop@gmail.com</li>
-                                <li><img src="images/loc.png" />Strada Palat, nr. 12A</li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </div>
 
-    </header>
+            </header>
 
-    <%}%>
+            <%}%>

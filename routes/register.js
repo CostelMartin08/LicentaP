@@ -52,9 +52,9 @@ router.post('/', async (req, res) => {
                 const affectedRows = result.affectedRows;
 
                 if (affectedRows > 0) {
-                    res.status(200).send('Cont utilizator creat cu succes');
+                    res.redirect('/login');
                 } else {
-                    res.status(500).send('Eroare la crearea contului');
+                    res.status(500).send('Eroare la crearea contului!');
                 }
             } catch (error) {
                 console.error('Eroare la procesarea rezultatului interogării:', error.message);
@@ -62,6 +62,8 @@ router.post('/', async (req, res) => {
             }
         });
     });
+
+
 });
 
 

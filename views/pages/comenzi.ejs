@@ -1,0 +1,56 @@
+<%- include('../partials/header.ejs', { includeLayouts: includeLayouts[0] }); -%>
+
+    <body>
+
+
+        <div class="order-page">
+            <h1 class="font-order">Detalii Comenzi</h1>
+            <div class="box-order container">
+
+
+                <% result.forEach((order, index)=> { %>
+                    <div class="order">
+
+                        <h3 class="text-center h2">Nr. <%= index + 1 %>
+                        </h3>
+                        <p><span>ID:</span>
+                            <%= order.id %>
+                        </p>
+                        <p><span>Pret final:</span>
+                            <%= order.pret_final %>
+                        </p>
+                        <p><span>Nume:</span>
+                            <%= order.nume %>
+                        </p>
+                        <p><span>Email:</span>
+                            <%= order.email %>
+                        </p>
+                        <p><span>Oras:</span>
+                            <%= order.oras %>
+                        </p>
+                        <p><span>Adresa: </span>
+                            <%= order.adresa %>
+                        </p>
+                        <p><span>Telefon:</span>
+                            <%= order.telefon %>
+                        </p>
+                        <p><span>Data:</span>
+                            <%= order.data %>
+                        </p>
+                        <p><span>ID-ul Produsului</span>: <%= order.idProduse %>
+                        </p>
+                        <p><span>Produse Comandate:</span>
+                            <%= order.produseComandate %>
+                        </p>
+                        <p><span>Detalii Comanda:</span>
+                            <%= order.detaliiComanda %>
+                        </p>
+                    </div>
+                    <% }) %>
+
+            </div>
+        </div>
+    </body>
+
+
+    <%- include('../partials/footer.ejs', { includeLayouts: includeLayouts[0] }); -%>

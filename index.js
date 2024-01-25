@@ -18,6 +18,7 @@ const adaugaCos = require('./routes/gestionareCos');
 const operatiuni = require('./routes/operatiuniProdus');
 const comanda = require('./routes/plasareComanda');
 const plata = require('./routes/plata');
+const comenzi = require('./routes/comenzi');
 const db = require('./routes/db');
 
 /* -------------------------------------------------------------------------- */
@@ -68,8 +69,12 @@ app.get('/', (req, res) => {
 
             if (req.isAuthenticated()) {
                 const firstName = req.user.firstName;
+                const admin = req.user.admin;
+                app.locals.admin = admin
                 app.locals.firstName = firstName;
-                res.render('pages/index', { result: produseActualizate, firstName, includeLayouts: [true] });
+                console.log(req.user)
+
+                res.render('pages/index', { result: produseActualizate, firstName, admin, includeLayouts: [true] });
             } else {
 
                 res.render('pages/index', { result: produseActualizate, includeLayouts: [true] });
@@ -80,6 +85,9 @@ app.get('/', (req, res) => {
 
 
 
+/* -------------------------------------------------------------------------- */
+
+
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/register', registerRouter);
@@ -87,6 +95,10 @@ app.use('/operatiuni', operatiuni);
 app.use('/cos', adaugaCos);
 app.use('/plaseaza_comanda', comanda);
 app.use('/plata', plata);
+/* -------------------------------------------------------------------------- */
+/*                             Ruta administrator                             */
+/* -------------------------------------------------------------------------- */
+app.use('/comenzi', comenzi);
 
 
 
