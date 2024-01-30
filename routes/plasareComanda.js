@@ -61,7 +61,7 @@ router.post('/', function (req, res) {
             return;
         }
         let pret_final = req.body.total;
-        console.log(pret_final);
+    
         let nume = req.body.nume;
         let produseComandate = cart.length;
         let email = req.body.email;

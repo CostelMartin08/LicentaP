@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
     var total = req.session.total;
     const cart = req.session.cart;
 
-    if (cart.length > 0) {
+    if (cart & cart.length > 0) {
 
         req.session.cart.forEach(element => {
             const queryString = `UPDATE produs SET cantitate = cantitate - ${element.cantitate} WHERE id IN (${element.id})`;

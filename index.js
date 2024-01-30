@@ -19,6 +19,7 @@ const operatiuni = require('./routes/operatiuniProdus');
 const comanda = require('./routes/plasareComanda');
 const plata = require('./routes/plata');
 const comenzi = require('./routes/comenzi');
+const comenziUtilizator = require('./routes/comenziUtilizator');
 const db = require('./routes/db');
 
 /* -------------------------------------------------------------------------- */
@@ -72,7 +73,8 @@ app.get('/', (req, res) => {
                 const admin = req.user.admin;
                 app.locals.admin = admin
                 app.locals.firstName = firstName;
-                console.log(req.user)
+                const email = req.user.email;
+                app.locals.email = email;
 
                 res.render('pages/index', { result: produseActualizate, firstName, admin, includeLayouts: [true] });
             } else {
@@ -99,7 +101,7 @@ app.use('/plata', plata);
 /*                             Ruta administrator                             */
 /* -------------------------------------------------------------------------- */
 app.use('/comenzi', comenzi);
-
+app.use('/comenziUtilizator', comenziUtilizator);
 
 
 

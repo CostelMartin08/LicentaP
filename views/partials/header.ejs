@@ -34,23 +34,32 @@
 
                                                 <%if(token){%>
                                                     <li class="active"> <a href="/?param1=<%=token%>">Acasa</a> </li>
-                                                    <%}else{%>
-                                                        <li class="active"> <a href="/">Acasa</a> </li>
-                                                        <%}%>
-                                                            <%if(userS===1){%>
-                                                                <li><a id="comenzi" href="./comenzi">Comenzi</a></li>
+                                                    <%  if(userS===0){%>
+                                                        <li class="active"> <a href="./comenziUtilizator">Comenzile
+                                                            
+                                                                mele</a> </li>
                                                                 <%}%>
-                                                                    <li><a href="/register">Înregistrare</a></li>
-                                                                    <li><a href="#contact">Contact</a></li>
-                                                                    <%if(!token){%>
-                                                                        <li><a id="loginButton" href="./login">Login</a>
+                                                        
+                                                            <%}else{%>
+                                                                <li class="active"> <a href="/">Acasa</a> </li>
+                                                                <%}%>
+                                                                    <%if(userS===1){%>
+                                                                        <li><a id="comenzi" href="./comenzi">Comenzi</a>
                                                                         </li>
                                                                         <%}%>
-                                                                            <%if(token){%>
-                                                                                <li><a id="deleteButton"
-                                                                                        href="./logout">Logout</a>
+                                                                            <li><a href="/register">Înregistrare</a>
+                                                                            </li>
+                                                                            <li><a href="#contact">Contact</a></li>
+                                                                            <%if(!token){%>
+                                                                                <li><a id="loginButton"
+                                                                                        href="./login">Login</a>
                                                                                 </li>
                                                                                 <%}%>
+                                                                                    <%if(token){%>
+                                                                                        <li><a id="deleteButton"
+                                                                                                href="./logout">Logout</a>
+                                                                                        </li>
+                                                                                        <%}%>
                                             </ul>
                                         </nav>
                                     </div>
